@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+
+main() {
+  declare ARGS=("$@")
+  if [[ -n "$GITHUB_VERSION_INPUT" ]] && [[ -n "$GITHUB_VERSION_BUMP" ]]; then
+    ARGS=("--input" "$GITHUB_VERSION_INPUT" "--bump" "$GITHUB_VERSION_BUMP")
+  fi
+
+  if [ ${#ARGS[@]} -eq 0 ]; then
+    echo "No arguments provided for bumping version" >&2
+    exit 1
+  fi
+
+  if ! /usr/local/bin/semver "${ARGS[@]}" >/dev/null; then
+    exit 1
+  fi
+
+  BUMPED_VERSION="$(/usr/local/bin/semver "${ARGS[@]}")"
+  echo "$BUMPED_VERSION"
+  if [ -n "$GITHUB_OUTPUT" ]; then
+    echo "BUMPED_VERSION=$BUMPED_VERSION" >>"$GITHUB_OUTPUT"
+  fi
+}
+
+main "$@"

@@ -1,0 +1,21 @@
+---
+name: "semver"
+description: "Github Action for bumping semver version"
+author: "Dokku"
+branding:
+  icon: "tag"
+  color: "blue"
+inputs:
+  bump:
+    description: "The type of bump to perform (major, minor, patch)"
+    required: true
+  input:
+    description: "The input version to bump"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  entrypoint: "/usr/local/bin/entrypoint"
+  env:
+    GITHUB_VERSION_BUMP: ${{ inputs.bump }}
+    GITHUB_VERSION_INPUT: ${{ inputs.input }}
