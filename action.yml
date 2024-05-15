@@ -1,6 +1,6 @@
 ---
-name: "semver"
-description: "Github Action for bumping semver version"
+name: "semver-generator"
+description: "Github Action for generating a semver version"
 author: "Dokku"
 branding:
   icon: "tag"

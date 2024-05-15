@@ -1,6 +1,6 @@
-# semver
+# semver-generator
 
-A golang binary to produce a semver-bumped version
+Github Action and golang binary for generating a semver version
 
 ## Requirements
 
