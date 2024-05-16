@@ -56,6 +56,7 @@ jobs:
           echo GIT_LATEST_TAG="$(git describe --tags "$(git rev-list --tags --max-count=1)")" >>"$GITHUB_OUTPUT"
 
       - name: Compute Next Tag
+        id: next-tag
         run: |
           git_next_tag="$(docker run --rm -e GITHUB_VERSION_INPUT -e GITHUB_VERSION_BUMP ghcr.io/${{ github.repository }}:${{ github.sha }})"
           if [[ -z "$git_next_tag" ]]; then
@@ -75,4 +76,4 @@ jobs:
           git tag "$GIT_NEXT_TAG"
           git push origin "$GIT_NEXT_TAG"
         env:
-          GIT_NEXT_TAG: ${{ steps.latest-tag.outputs.GIT_NEXT_TAG }}
+          GIT_NEXT_TAG: ${{ steps.next-tag.outputs.GIT_NEXT_TAG }}
