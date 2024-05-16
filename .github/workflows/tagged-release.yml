@@ -7,6 +7,11 @@ on:
     tags:
       - "*"
 
+permissions:
+  attestations: write
+  id-token: write
+  contents: read
+
 jobs:
   tagged-release:
     name: tagged-release
