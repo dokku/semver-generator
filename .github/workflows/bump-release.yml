@@ -58,7 +58,7 @@ jobs:
       - name: Compute Next Tag
         run: |
           git_next_tag="$(docker run --rm -e GITHUB_VERSION_INPUT -e GITHUB_VERSION_BUMP ghcr.io/${{ github.repository }}:${{ github.sha }})"
-          echo "GIT_NEXT_TAG=$git_next_tag" >>"$GITHUB_OUTPUT
+          echo "GIT_NEXT_TAG=$git_next_tag" >>"$GITHUB_OUTPUT"
         env:
           GITHUB_VERSION_INPUT: ${{ steps.latest-tag.outputs.GIT_LATEST_TAG }}
           GITHUB_VERSION_BUMP: ${{ github.event.inputs.release_type }}
