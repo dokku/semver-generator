@@ -52,8 +52,11 @@ func main() {
 	switch *bump {
 	case "major":
 		parsed.Major += 1
+		parsed.Minor = 0
+		parsed.Patch = 0
 	case "minor":
 		parsed.Minor += 1
+		parsed.Patch = 0
 	case "patch":
 		parsed.Patch += 1
 	}
