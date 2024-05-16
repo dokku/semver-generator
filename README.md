@@ -17,5 +17,5 @@ docker build --progress plain -t semver .
 docker run --rm semver --input 0.1.2 --bump patch
 
 # run it with environment variables
-docker run --rm -e GITHUB_VERSION_INPUT=0.1.2 -e GITHUB_VERSION_BUMP=patch semver
+docker run --rm -e SEMVER_GENERATOR_INPUT=0.1.2 -e SEMVER_GENERATOR_BUMP=patch semver
 ```

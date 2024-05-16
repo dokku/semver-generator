@@ -5,8 +5,8 @@ name: "bump-version"
 on:
   workflow_dispatch:
     inputs:
-      release_type:
-        description: "Release type"
+      bump_type:
+        description: "Bump type"
         default: "patch"
         required: true
         type: choice
@@ -58,16 +58,16 @@ jobs:
       - name: Compute Next Tag
         id: next-tag
         run: |
-          git_next_tag="$(docker run --rm -e GITHUB_VERSION_INPUT -e GITHUB_VERSION_BUMP ghcr.io/${{ github.repository }}:${{ github.sha }})"
+          git_next_tag="$(docker run --rm -e SEMVER_GENERATOR_INPUT -e SEMVER_GENERATOR_BUMP ghcr.io/${{ github.repository }}:${{ github.sha }})"
           if [[ -z "$git_next_tag" ]]; then
             echo "Failed to compute next tag"
-            docker run --rm -e GITHUB_VERSION_INPUT -e GITHUB_VERSION_BUMP ghcr.io/${{ github.repository }}:${{ github.sha }}
+            docker run --rm -e SEMVER_GENERATOR_INPUT -e SEMVER_GENERATOR_BUMP ghcr.io/${{ github.repository }}:${{ github.sha }}
             exit 1
           fi
           echo "GIT_NEXT_TAG=$git_next_tag" >>"$GITHUB_OUTPUT"
         env:
-          GITHUB_VERSION_INPUT: ${{ steps.latest-tag.outputs.GIT_LATEST_TAG }}
-          GITHUB_VERSION_BUMP: ${{ github.event.inputs.release_type }}
+          SEMVER_GENERATOR_INPUT: ${{ steps.latest-tag.outputs.GIT_LATEST_TAG }}
+          SEMVER_GENERATOR_BUMP: ${{ github.event.inputs.bump_type }}
 
       - name: Create and Push Tag
         run: |

@@ -17,5 +17,5 @@ runs:
   image: "Dockerfile"
   entrypoint: "/usr/local/bin/entrypoint"
   env:
-    GITHUB_VERSION_BUMP: ${{ inputs.bump }}
-    GITHUB_VERSION_INPUT: ${{ inputs.input }}
+    SEMVER_GENERATOR_BUMP: ${{ inputs.bump }}
+    SEMVER_GENERATOR_INPUT: ${{ inputs.input }}

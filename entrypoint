@@ -3,8 +3,8 @@ set -e
 
 main() {
   declare ARGS=("$@")
-  if [[ -n "$GITHUB_VERSION_INPUT" ]] && [[ -n "$GITHUB_VERSION_BUMP" ]]; then
-    ARGS=("--input" "$GITHUB_VERSION_INPUT" "--bump" "$GITHUB_VERSION_BUMP")
+  if [[ -n "$SEMVER_GENERATOR_INPUT" ]] && [[ -n "$SEMVER_GENERATOR_BUMP" ]]; then
+    ARGS=("--input" "$SEMVER_GENERATOR_INPUT" "--bump" "$SEMVER_GENERATOR_BUMP")
   fi
 
   if [ ${#ARGS[@]} -eq 0 ]; then
