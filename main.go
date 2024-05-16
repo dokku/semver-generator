@@ -58,9 +58,24 @@ func main() {
 		parsed.Patch += 1
 	}
 
+	updatedVersion := parsed.String()
 	if addPrefix {
-		fmt.Printf("v" + parsed.String() + "\n")
-	} else {
-		fmt.Printf(parsed.String() + "\n")
+		updatedVersion = "v" + parsed.String()
+	}
+
+	fmt.Printf(updatedVersion + "\n")
+	githubOutput := os.Getenv("GITHUB_OUTPUT")
+	if githubOutput != "" {
+		f, err := os.OpenFile(githubOutput, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+		if err != nil {
+			slog.Error("Failed to open file", "file", githubOutput, "error", err.Error())
+			os.Exit(1)
+		}
+		defer f.Close()
+
+		if _, err = f.WriteString(fmt.Sprintf("VERSION=%s", updatedVersion)); err != nil {
+			slog.Error("Failed to write to file", "file", githubOutput, "error", err.Error())
+			os.Exit(1)
+		}
 	}
 }
