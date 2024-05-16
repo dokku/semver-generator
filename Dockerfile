@@ -10,3 +10,4 @@ RUN apk add --no-cache bash
 COPY --from=builder /go/src/github.com/dokku/semver/semver /usr/local/bin/semver
 COPY entrypoint /usr/local/bin/entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
+LABEL org.opencontainers.image.description "A tool for generating a semver version from an existing version and a desired bump level"
