@@ -1,3 +1,6 @@
-*yml
+.dockerignore
+.github
+.gitignore
 *md
+*yml
 semver
