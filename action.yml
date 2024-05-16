@@ -15,7 +15,8 @@ inputs:
 runs:
   using: "docker"
   image: "Dockerfile"
-  entrypoint: "/usr/local/bin/entrypoint"
-  env:
-    SEMVER_GENERATOR_BUMP: ${{ inputs.bump }}
-    SEMVER_GENERATOR_INPUT: ${{ inputs.input }}
+  args:
+    - "--bump"
+    - ${{ inputs.bump }}
+    - "--input"
+    - ${{ inputs.input }}
