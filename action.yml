@@ -15,8 +15,8 @@ inputs:
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - "--bump"
-    - ${{ inputs.bump }}
-    - "--input"
-    - ${{ inputs.input }}
+  entrypoint: "/usr/local/bin/github-entrypoint"
+
+outputs:
+  version:
+    description: "The computed version"

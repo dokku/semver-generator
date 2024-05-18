@@ -1,4 +1,4 @@
-module github.com/dokku/semver
+module github.com/dokku/semver-generator
 
 go 1.22.3
 

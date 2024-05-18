@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	go_semver "github.com/coreos/go-semver/semver"
+	"github.com/coreos/go-semver/semver"
 	flag "github.com/spf13/pflag"
 )
 
@@ -43,7 +43,7 @@ func main() {
 		addPrefix = true
 	}
 
-	parsed, err := go_semver.NewVersion(*input)
+	parsed, err := semver.NewVersion(*input)
 	if err != nil {
 		slog.Error("Invalid version", "version", *input, "error", err.Error())
 		os.Exit(1)
@@ -76,7 +76,7 @@ func main() {
 		}
 		defer f.Close()
 
-		if _, err = f.WriteString(fmt.Sprintf("VERSION=%s", updatedVersion)); err != nil {
+		if _, err = f.WriteString(fmt.Sprintf("version=%s", updatedVersion)); err != nil {
 			slog.Error("Failed to write to file", "file", githubOutput, "error", err.Error())
 			os.Exit(1)
 		}

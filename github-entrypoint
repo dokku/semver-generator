@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+/usr/local/bin/semver-generator --bump "$INPUT_BUMP" --input "$INPUT_VERSION"

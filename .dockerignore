@@ -3,4 +3,4 @@
 .gitignore
 *md
 *yml
-semver
+semver-generator
