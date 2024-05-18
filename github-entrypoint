@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-if [ -n "$INPUT_VERSION" ] && [ -n "$INPUT_BUMP" ]; then
-  /usr/local/bin/semver-generator --bump "$INPUT_BUMP" --input "$INPUT_VERSION"
+if [ -n "$INPUT_INPUT" ] && [ -n "$INPUT_BUMP" ]; then
+  /usr/local/bin/semver-generator --bump "$INPUT_BUMP" --input "$INPUT_INPUT"
 else
   /usr/local/bin/semver-generator "$@"
 fi
