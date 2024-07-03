@@ -1,4 +1,4 @@
-FROM golang:1.22.3-alpine as builder
+FROM golang:1.23rc1-alpine as builder
 
 COPY . /go/src/github.com/dokku/semver-generator
 WORKDIR /go/src/github.com/dokku/semver-generator
