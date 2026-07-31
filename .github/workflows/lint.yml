@@ -18,7 +18,7 @@ jobs:
       - name: Clone
         uses: actions/checkout@v7
       - name: Run hadolint
-        uses: hadolint/hadolint-action@2a66e89f53d0771bb131a7fa31f3136336094aa6
+        uses: hadolint/hadolint-action@v3
 
   markdown-lint:
     name: markdown-lint
@@ -39,6 +39,6 @@ jobs:
       - name: Clone
         uses: actions/checkout@v7
       - name: Run yamllint
-        uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c
+        uses: ibiqlik/action-yamllint@v3
         with:
           config_file: ".github/linters/.yamllint.yml"
