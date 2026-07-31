@@ -18,7 +18,7 @@ jobs:
       - name: Clone
         uses: actions/checkout@v7
       - name: Run hadolint
-        uses: hadolint/hadolint-action@v3
+        uses: hadolint/hadolint-action@v3.4.0
 
   markdown-lint:
     name: markdown-lint
